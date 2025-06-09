@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -12,15 +12,76 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 通用容器样式 */
+.main-container {
+  @apply max-w-4xl mx-auto px-4;
+}
+
+.image-container {
+  @apply w-[512px] h-[512px] mx-auto mb-6 rounded-lg overflow-hidden border-2;
+}
+
+/* 标题样式 */
+.page-title {
+  @apply text-2xl font-bold mb-12 text-center text-white;
+}
+
+.section-title {
+  @apply text-2xl font-bold mb-4 text-white;
+}
+
+/* 卡片网格样式 */
+.cards-grid {
+  @apply w-[512px] h-[512px] mx-auto;
+}
+
+.cards-grid-inner {
+  @apply grid grid-cols-3 gap-3 h-full;
+}
+
+/* 卡片基础样式 */
+.option-card {
+  @apply aspect-square flex items-center justify-center p-2 rounded-xl cursor-pointer transition-all text-base text-white shadow-lg border-2;
+}
+
+.option-card-selected {
+  @apply bg-purple-600 shadow-purple-500/50 scale-[0.98] border-purple-400;
+}
+
+.option-card-default {
+  @apply bg-purple-800 hover:bg-purple-700 hover:shadow-purple-500/30 hover:scale-[0.98] border-purple-700;
+}
+
+/* 按钮样式 */
+.back-button {
+  @apply px-6 py-2.5 bg-purple-900 text-white rounded-xl hover:bg-purple-800 transition-colors border border-purple-700;
+}
+
+.reset-button {
+  @apply px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-colors border border-purple-500;
+}
+
+/* 加载状态容器 */
+.loading-container {
+  @apply bg-purple-900/30 border-purple-800 flex items-center justify-center;
+}
+
+.loading-text {
+  @apply text-xl text-purple-300;
+}
+
+/* 图片显示容器 */
+.image-display {
+  @apply bg-purple-900/20 border-purple-800;
+}
+
+/* 按钮容器 */
+.button-container {
+  @apply mt-8 text-center;
 }
