@@ -8,9 +8,7 @@ const GEMINI_PROXY_BASE_URL = process.env.GEMINI_PROXY_URL;
 // 但这里为了模拟通过反向代理，我们手动定义必要的结构。
 enum Modality {
   TEXT = 'TEXT',
-  IMAGE = 'IMAGE',
-  VIDEO = 'VIDEO', // 根据实际支持的模态添加
-  AUDIO = 'AUDIO', // 根据实际支持的模态添加
+  IMAGE = 'IMAGE',  
 }
 
 export async function POST(req: Request) {
@@ -60,8 +58,9 @@ export async function POST(req: Request) {
       let errorData;
       try {
         errorData = JSON.parse(errorText);
-      } catch (e) {
+      } catch (e: unknown) {
         errorData = { message: errorText };
+        console.error("无法解析错误响应:", e);
       }
       return NextResponse.json({ error: `Gemini API error: ${response.statusText}`, details: errorData }, { status: response.status });
     }
